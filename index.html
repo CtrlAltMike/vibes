@@ -12,153 +12,123 @@
         }
 
         :root {
-            --bg-primary: #0a0e1a;
-            --bg-secondary: #141925;
-            --bg-card: #1a1f2e;
-            --text-primary: #e8eaed;
-            --text-secondary: #9aa0a6;
-            --accent: #7c3aed;
-            --accent-hover: #9333ea;
-            --border: #2d3748;
-            --glow: #a78bfa;
+            --bg-primary: #050505;
+            --bg-secondary: #0a0a0a;
+            --bg-card: #111111;
+            --text-primary: #ffffff;
+            --text-secondary: #888888;
+            --accent: #6366f1;
+            --accent-hover: #818cf8;
+            --border: #222222;
+            --glow: #6366f1;
         }
 
         [data-theme="light"] {
-            --bg-primary: #f8f9fa;
-            --bg-secondary: #e9ecef;
+            --bg-primary: #ffffff;
+            --bg-secondary: #fafafa;
             --bg-card: #ffffff;
-            --text-primary: #212529;
-            --text-secondary: #6c757d;
-            --accent: #7c3aed;
-            --accent-hover: #6d28d9;
-            --border: #dee2e6;
-            --glow: #c4b5fd;
+            --text-primary: #000000;
+            --text-secondary: #666666;
+            --accent: #6366f1;
+            --accent-hover: #4f46e5;
+            --border: #e5e5e5;
+            --glow: #6366f1;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif;
+            background: var(--bg-primary);
             color: var(--text-primary);
             min-height: 100vh;
             line-height: 1.6;
             position: relative;
             overflow-x: hidden;
+            transition: background 0.3s ease;
         }
 
-        /* Theme toggle styles */
+        /* Theme toggle - minimal design */
         .theme-toggle {
             position: fixed;
             top: 2rem;
             right: 2rem;
+            width: 44px;
+            height: 44px;
             background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: 25px;
-            padding: 0.5rem;
+            border-radius: 50%;
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            justify-content: center;
             transition: all 0.3s ease;
             z-index: 100;
         }
 
         .theme-toggle:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(124, 58, 237, 0.2);
-        }
-
-        .toggle-slider {
-            width: 50px;
-            height: 24px;
-            background: var(--border);
-            border-radius: 12px;
-            position: relative;
-            transition: background 0.3s ease;
-        }
-
-        .toggle-slider::after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: var(--text-primary);
-            border-radius: 50%;
-            top: 2px;
-            left: 2px;
-            transition: transform 0.3s ease;
-        }
-
-        [data-theme="light"] .toggle-slider::after {
-            transform: translateX(26px);
-        }
-
-        [data-theme="light"] .toggle-slider {
-            background: var(--accent);
+            transform: scale(1.1);
+            border-color: var(--accent);
         }
 
         .theme-icon {
             font-size: 1.2rem;
+            line-height: 1;
         }
 
-        /* Animated background particles */
-        .particles {
+        [data-theme="light"] .theme-icon-dark {
+            display: none;
+        }
+
+        [data-theme="dark"] .theme-icon-light,
+        .theme-icon-light {
+            display: none;
+        }
+
+        [data-theme="light"] .theme-icon-light {
+            display: block;
+        }
+
+        [data-theme="dark"] .theme-icon-dark {
+            display: block;
+        }
+
+        /* Subtle animated background */
+        .bg-gradient {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.05) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 50%, rgba(129, 140, 248, 0.05) 0%, transparent 50%),
+                        radial-gradient(circle at 50% 100%, rgba(99, 102, 241, 0.03) 0%, transparent 50%);
+            animation: drift 30s ease-in-out infinite;
             pointer-events: none;
-            opacity: 0.4;
         }
 
-        [data-theme="light"] .particles {
-            opacity: 0.2;
-        }
-
-        .particle {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: var(--glow);
-            border-radius: 50%;
-            animation: float 20s infinite linear;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(100vh) translateX(0);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100vh) translateX(100px);
-                opacity: 0;
-            }
+        @keyframes drift {
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.1); }
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 2rem;
             position: relative;
             z-index: 1;
         }
 
+        /* Clean header */
         header {
             text-align: center;
-            margin-bottom: 4rem;
-            animation: slideDown 0.8s ease-out;
+            margin: 4rem 0 3rem;
+            animation: fadeIn 0.8s ease-out;
         }
 
-        @keyframes slideDown {
+        @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: translateY(-30px);
+                transform: translateY(20px);
             }
             to {
                 opacity: 1;
@@ -167,17 +137,18 @@
         }
 
         h1 {
-            font-size: 3rem;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--glow) 100%);
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 0.5rem;
-            font-weight: 700;
-            text-shadow: 0 0 40px rgba(124, 58, 237, 0.3);
             display: inline-block;
             cursor: pointer;
             transition: transform 0.3s ease;
+            user-select: none;
         }
 
         h1:hover {
@@ -199,47 +170,34 @@
 
         .tagline {
             color: var(--text-secondary);
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
+            font-size: 1rem;
+            font-weight: 400;
         }
 
+        /* Minimal filter pills */
         .filters {
             display: flex;
-            gap: 1rem;
+            gap: 0.5rem;
             justify-content: center;
             margin-bottom: 3rem;
             flex-wrap: wrap;
-            animation: fadeIn 1s ease-out 0.3s backwards;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
         }
 
         .filter-btn {
-            padding: 0.5rem 1.5rem;
-            background: var(--bg-card);
+            padding: 0.5rem 1.25rem;
+            background: transparent;
             border: 1px solid var(--border);
             color: var(--text-secondary);
-            border-radius: 25px;
+            border-radius: 100px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            transition: all 0.2s ease;
+            font-size: 0.875rem;
+            font-weight: 500;
         }
 
         .filter-btn:hover {
-            background: var(--accent);
-            color: white;
             border-color: var(--accent);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(124, 58, 237, 0.3);
+            color: var(--accent);
         }
 
         .filter-btn.active {
@@ -248,11 +206,12 @@
             border-color: var(--accent);
         }
 
+        /* Clean card grid */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
-            animation: fadeInUp 1s ease-out 0.5s backwards;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.25rem;
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
         }
 
         @keyframes fadeInUp {
@@ -266,85 +225,111 @@
             }
         }
 
+        /* Minimal cards */
         .card {
             background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: 12px;
+            border-radius: 16px;
             padding: 1.5rem;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
             position: relative;
             overflow: hidden;
+        }
+
+        [data-theme="light"] .card {
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
         }
 
         .card::before {
             content: '';
             position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(135deg, var(--accent), var(--glow));
-            border-radius: 12px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: -1;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-hover));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+            transform-origin: left;
         }
 
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            transform: translateY(-4px);
+            border-color: var(--accent);
         }
 
         .card:hover::before {
-            opacity: 0.3;
+            transform: scaleX(1);
+        }
+
+        [data-theme="light"] .card:hover {
+            box-shadow: 0 8px 24px rgba(99, 102, 241, 0.1);
+        }
+
+        [data-theme="dark"] .card:hover {
+            box-shadow: 0 8px 24px rgba(99, 102, 241, 0.1);
         }
 
         .card-header {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
+            gap: 1rem;
         }
 
         .card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            line-height: 1.3;
             color: var(--text-primary);
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            flex: 1;
         }
 
         .platform-badge {
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
+            padding: 0.25rem 0.625rem;
+            border-radius: 100px;
+            font-size: 0.7rem;
+            font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.05em;
             white-space: nowrap;
+            opacity: 0.8;
         }
 
         .platform-claude {
-            background: rgba(196, 155, 122, 0.2);
+            background: rgba(196, 155, 122, 0.1);
             color: #c49b7a;
-            border: 1px solid rgba(196, 155, 122, 0.3);
         }
 
         .platform-chatgpt {
-            background: rgba(116, 185, 145, 0.2);
+            background: rgba(116, 185, 145, 0.1);
             color: #74b991;
-            border: 1px solid rgba(116, 185, 145, 0.3);
         }
 
         .platform-gemini {
-            background: rgba(66, 133, 244, 0.2);
+            background: rgba(66, 133, 244, 0.1);
             color: #4285f4;
-            border: 1px solid rgba(66, 133, 244, 0.3);
         }
 
-        .card p {
+        .card-summary {
             color: var(--text-secondary);
-            margin-bottom: 1.5rem;
+            font-size: 0.875rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .card-content {
+            display: none;
+            color: var(--text-secondary);
             line-height: 1.6;
+            margin-bottom: 1.5rem;
         }
 
         .card-link {
@@ -354,37 +339,348 @@
             color: var(--accent);
             text-decoration: none;
             font-weight: 500;
-            transition: all 0.3s ease;
+            font-size: 0.875rem;
+            margin-top: auto;
+            transition: gap 0.2s ease;
         }
 
         .card-link:hover {
-            color: var(--accent-hover);
             gap: 0.75rem;
         }
 
         .card-link::after {
             content: '→';
-            transition: transform 0.3s ease;
+            transition: transform 0.2s ease;
         }
 
         .card-link:hover::after {
-            transform: translateX(5px);
+            transform: translateX(2px);
         }
 
         .tags {
             display: flex;
-            gap: 0.5rem;
+            gap: 0.375rem;
             margin-top: 1rem;
             flex-wrap: wrap;
         }
 
         .tag {
-            padding: 0.25rem 0.75rem;
-            background: rgba(124, 58, 237, 0.1);
-            border: 1px solid rgba(124, 58, 237, 0.2);
-            border-radius: 15px;
-            font-size: 0.8rem;
+            padding: 0.25rem 0.625rem;
+            background: var(--bg-secondary);
+            border-radius: 100px;
+            font-size: 0.75rem;
             color: var(--text-secondary);
+        }
+
+        /* Overlay for expanded cards */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 1000;
+            display: none;
+            cursor: pointer;
+        }
+
+        [data-theme="light"] .overlay {
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .overlay.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        /* Expanded card */
+        .card.expanded {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            z-index: 1001;
+            cursor: default;
+            animation: expandCard 0.3s ease;
+            padding: 2rem;
+            border: 1px solid var(--border);
+        }
+
+        @keyframes expandCard {
+            from {
+                transform: translate(-50%, -50%) scale(0.95);
+                opacity: 0;
+            }
+            to {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 1;
+            }
+        }
+
+        .card.expanded .card-content {
+            display: block;
+        }
+
+        .card.expanded .card-summary {
+            display: none;
+        }
+
+        .card.expanded h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Content Manager - Cleaner Design */
+        .manager-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 2000;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        [data-theme="light"] .manager-modal {
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .manager-modal.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .manager-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid var(--border);
+        }
+
+        .manager-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .manager-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .manager-actions {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .manager-btn {
+            padding: 0.625rem 1.25rem;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 100px;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .manager-btn:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        .manager-btn.secondary {
+            background: transparent;
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+        }
+
+        .manager-btn.secondary:hover {
+            border-color: var(--text-secondary);
+            color: var(--text-primary);
+        }
+
+        .content-editor {
+            display: grid;
+            gap: 1rem;
+            max-height: 60vh;
+            overflow-y: auto;
+            padding-right: 0.5rem;
+        }
+
+        .content-item {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.25rem;
+            display: grid;
+            gap: 0.875rem;
+        }
+
+        .content-item h4 {
+            color: var(--text-primary);
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .content-item input,
+        .content-item textarea,
+        .content-item select {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+            padding: 0.625rem;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 0.875rem;
+            transition: border-color 0.2s ease;
+        }
+
+        .content-item input:focus,
+        .content-item textarea:focus,
+        .content-item select:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .content-item textarea {
+            resize: vertical;
+            min-height: 60px;
+        }
+
+        .field-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+        }
+
+        .field-group.triple {
+            grid-template-columns: 2fr 1fr 1fr;
+        }
+
+        .remove-item-btn {
+            padding: 0.5rem;
+            background: transparent;
+            color: #ef4444;
+            border: 1px solid #ef4444;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.875rem;
+            transition: all 0.2s ease;
+        }
+
+        .remove-item-btn:hover {
+            background: rgba(239, 68, 68, 0.1);
+        }
+
+        .add-item-btn {
+            padding: 0.875rem;
+            background: transparent;
+            color: var(--accent);
+            border: 2px dashed var(--border);
+            border-radius: 12px;
+            cursor: pointer;
+            margin-top: 1rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .add-item-btn:hover {
+            border-color: var(--accent);
+            background: rgba(99, 102, 241, 0.05);
+        }
+
+        .code-output {
+            background: var(--bg-secondary);
+            color: var(--accent);
+            padding: 1.25rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            font-family: 'SF Mono', 'Monaco', 'Inconsolata', monospace;
+            font-size: 0.8rem;
+            line-height: 1.5;
+            overflow-x: auto;
+            max-height: 300px;
+            overflow-y: auto;
+            margin-top: 1.5rem;
+            display: none;
+        }
+
+        .code-output.active {
+            display: block;
+        }
+
+        .copy-success {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--accent);
+            color: white;
+            padding: 0.875rem 1.5rem;
+            border-radius: 100px;
+            font-weight: 500;
+            z-index: 3000;
+            animation: slideUpFade 2s ease;
+            pointer-events: none;
+        }
+
+        @keyframes slideUpFade {
+            0% { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            20% { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+            80% { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+            100% { 
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--text-secondary);
         }
 
         @media (max-width: 768px) {
@@ -394,18 +690,57 @@
             
             .grid {
                 grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .card.expanded {
+                width: 95%;
+                padding: 1.5rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            header {
+                margin: 2rem 0;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .grid {
+                grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
             }
         }
     </style>
 </head>
 <body>
-    <div class="particles" id="particles"></div>
+    <div class="bg-gradient"></div>
+    <div class="overlay" id="overlay"></div>
+    
+    <!-- Content Manager Modal (Hidden Easter Egg) -->
+    <div class="manager-modal" id="manager-modal">
+        <div class="manager-content">
+            <div class="manager-header">
+                <h2 class="manager-title">Content Manager</h2>
+                <div class="manager-actions">
+                    <button class="manager-btn" onclick="generateCode()">Generate Code</button>
+                    <button class="manager-btn" id="copy-btn" onclick="copyCode()" style="display: none;">Copy Array</button>
+                    <button class="manager-btn secondary" onclick="closeManager()">Close</button>
+                </div>
+            </div>
+            <div class="content-editor" id="content-editor">
+                <!-- Dynamic content forms will be inserted here -->
+            </div>
+            <button class="add-item-btn" onclick="addNewItem()">+ Add New Item</button>
+            <pre class="code-output" id="code-output"></pre>
+        </div>
+    </div>
     
     <!-- Theme Toggle -->
     <div class="theme-toggle" onclick="toggleTheme()">
-        <span class="theme-icon">🌙</span>
-        <div class="toggle-slider"></div>
-        <span class="theme-icon">☀️</span>
+        <span class="theme-icon theme-icon-dark">🌙</span>
+        <span class="theme-icon theme-icon-light">☀️</span>
     </div>
     
     <div class="container">
@@ -427,11 +762,14 @@
     </div>
 
     <script>
+        // ========== START CONTENT ARRAY ==========
+        // Replace everything between START and END markers when updating
         // Content data - Easy to update by adding new items to this array
         const content = [
             {
                 title: "Interactive Particle System",
-                summary: "A mesmerizing particle simulation with gravitational physics and color transitions. Watch as particles dance and interact in real-time.",
+                summary: "A mesmerizing particle simulation with gravitational physics and color transitions.",
+                fullDescription: "A mesmerizing particle simulation with gravitational physics and color transitions. Watch as particles dance and interact in real-time, creating beautiful patterns and formations. Features customizable physics parameters, multiple color modes, and the ability to interact with particles using mouse movements. Built with WebGL for maximum performance.",
                 url: "https://claude.ai/share/example1",
                 platform: "claude",
                 category: "experiment",
@@ -439,7 +777,8 @@
             },
             {
                 title: "AI Story Generator Prompt",
-                summary: "A creative writing prompt that generates compelling narratives with rich character development and unexpected plot twists.",
+                summary: "Creative writing prompt for compelling narratives with rich character development.",
+                fullDescription: "A creative writing prompt that generates compelling narratives with rich character development and unexpected plot twists. This prompt template helps AI models create engaging stories across multiple genres, maintaining consistency in character voices and plot progression. Perfect for writers looking for inspiration or developers building narrative AI applications.",
                 url: "https://chatgpt.com/share/example2",
                 platform: "chatgpt",
                 category: "prompt",
@@ -447,7 +786,8 @@
             },
             {
                 title: "Data Flow Visualization",
-                summary: "Real-time visualization of data structures and algorithms using D3.js. Perfect for understanding complex sorting and searching algorithms.",
+                summary: "Real-time visualization of data structures and algorithms using D3.js.",
+                fullDescription: "Real-time visualization of data structures and algorithms using D3.js. Perfect for understanding complex sorting and searching algorithms. Watch as arrays sort themselves, trees balance, and graphs traverse in beautiful animated sequences. Includes step-by-step explanations and customizable speed controls for educational purposes.",
                 url: "https://claude.ai/share/example3",
                 platform: "claude",
                 category: "visualization",
@@ -455,7 +795,8 @@
             },
             {
                 title: "Recursive Art Generator",
-                summary: "Generates beautiful fractal patterns using recursive algorithms. Each iteration creates unique, mathematically-driven artwork.",
+                summary: "Generates fractal patterns using recursive algorithms for unique mathematical artwork.",
+                fullDescription: "Generates beautiful fractal patterns using recursive algorithms. Each iteration creates unique, mathematically-driven artwork. Explore the beauty of mathematics through Mandelbrot sets, Julia sets, and custom recursive patterns. Features real-time generation, zoom capabilities, and export options for high-resolution images.",
                 url: "https://g.co/gemini/share/example4",
                 platform: "gemini",
                 category: "experiment",
@@ -463,7 +804,8 @@
             },
             {
                 title: "Code Review Assistant",
-                summary: "An intelligent prompt for comprehensive code reviews, identifying potential bugs, suggesting optimizations, and ensuring best practices.",
+                summary: "Intelligent prompt for comprehensive code reviews and optimization suggestions.",
+                fullDescription: "An intelligent prompt for comprehensive code reviews, identifying potential bugs, suggesting optimizations, and ensuring best practices. This assistant can analyze code in multiple languages, check for security vulnerabilities, suggest performance improvements, and ensure compliance with team coding standards. Includes detailed explanations for each suggestion.",
                 url: "https://claude.ai/share/example5",
                 platform: "claude",
                 category: "prompt",
@@ -471,13 +813,69 @@
             },
             {
                 title: "Music Visualizer",
-                summary: "Audio-reactive visualization that responds to music in real-time, creating stunning visual experiences synchronized with sound.",
+                summary: "Audio-reactive visualization creating stunning visual experiences synchronized with sound.",
+                fullDescription: "Audio-reactive visualization that responds to music in real-time, creating stunning visual experiences synchronized with sound. Features frequency analysis, beat detection, and multiple visualization modes from abstract patterns to realistic simulations. Works with microphone input or uploaded audio files.",
                 url: "https://chatgpt.com/share/example6",
                 platform: "chatgpt",
                 category: "visualization",
                 tags: ["audio", "graphics", "interactive"]
+            },
+            {
+                title: "Neural Network Playground",
+                summary: "Interactive tool for building and training neural networks in the browser.",
+                fullDescription: "An interactive playground for understanding neural networks. Build custom architectures, visualize forward and backward propagation, and see how different parameters affect learning. Includes pre-built datasets and the ability to draw your own. Perfect for learning deep learning concepts without writing code.",
+                url: "https://claude.ai/share/example7",
+                platform: "claude",
+                category: "experiment",
+                tags: ["ml", "interactive", "education"]
+            },
+            {
+                title: "CSS Animation Studio",
+                summary: "Visual tool for creating complex CSS animations with timeline controls.",
+                fullDescription: "A comprehensive visual tool for creating complex CSS animations and keyframes. Features a timeline editor, bezier curve editor for easing functions, and real-time preview. Export clean CSS code ready for production. Includes a library of pre-built animations and the ability to save custom presets.",
+                url: "https://g.co/gemini/share/example8",
+                platform: "gemini",
+                category: "visualization",
+                tags: ["css", "design", "tools"]
+            },
+            {
+                title: "Prompt Engineering Guide",
+                summary: "Comprehensive guide for crafting effective prompts for various AI models.",
+                fullDescription: "A detailed guide and interactive tool for crafting effective prompts across different AI models and use cases. Learn techniques like few-shot learning, chain-of-thought prompting, and role-playing. Includes templates for common tasks and A/B testing capabilities to compare prompt effectiveness.",
+                url: "https://claude.ai/share/example9",
+                platform: "claude",
+                category: "prompt",
+                tags: ["ai", "guide", "optimization"]
+            },
+            {
+                title: "3D Shader Experiments",
+                summary: "Collection of GLSL shaders creating stunning visual effects in real-time.",
+                fullDescription: "A collection of experimental GLSL shaders creating stunning visual effects. From realistic water simulations to abstract art, each shader is fully customizable with real-time parameter adjustment. Includes full source code and explanations of the mathematical concepts behind each effect.",
+                url: "https://chatgpt.com/share/example10",
+                platform: "chatgpt",
+                category: "experiment",
+                tags: ["3d", "graphics", "shaders"]
+            },
+            {
+                title: "API Testing Companion",
+                summary: "Smart prompt for testing REST APIs and generating comprehensive test suites.",
+                fullDescription: "An intelligent companion for API testing that can generate comprehensive test suites, mock data, and edge cases. Understands OpenAPI specifications and can create tests for authentication, validation, error handling, and performance. Outputs tests in multiple formats including Postman, Jest, and Python.",
+                url: "https://g.co/gemini/share/example11",
+                platform: "gemini",
+                category: "prompt",
+                tags: ["api", "testing", "automation"]
+            },
+            {
+                title: "Generative Music Box",
+                summary: "AI-powered music generation using mathematical patterns and rules.",
+                fullDescription: "Create unique musical compositions using AI and mathematical patterns. This tool combines music theory with generative algorithms to create endless variations of melodies, harmonies, and rhythms. Features MIDI export, multiple instrument voices, and real-time parameter tweaking for live performances.",
+                url: "https://claude.ai/share/example12",
+                platform: "claude",
+                category: "experiment",
+                tags: ["music", "generative", "ai"]
             }
         ];
+        // ========== END CONTENT ARRAY ==========
 
         // Render content cards
         function renderContent(filter = 'all') {
@@ -486,14 +884,15 @@
                 ? content 
                 : content.filter(item => item.category === filter);
             
-            grid.innerHTML = filteredContent.map(item => `
-                <div class="card">
+            grid.innerHTML = filteredContent.map((item, index) => `
+                <div class="card" data-index="${index}">
                     <div class="card-header">
                         <h3>${item.title}</h3>
                         <span class="platform-badge platform-${item.platform}">${item.platform}</span>
                     </div>
-                    <p>${item.summary}</p>
-                    <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="card-link">
+                    <p class="card-summary">${item.summary}</p>
+                    <p class="card-content">${item.fullDescription}</p>
+                    <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="card-link" onclick="event.stopPropagation()">
                         View Project
                     </a>
                     <div class="tags">
@@ -501,6 +900,49 @@
                     </div>
                 </div>
             `).join('');
+
+            // Add click handlers to cards
+            document.querySelectorAll('.card').forEach(card => {
+                card.addEventListener('click', function(e) {
+                    if (e.target.classList.contains('card-link')) return;
+                    expandCard(this);
+                });
+            });
+        }
+
+        // Expand card function
+        function expandCard(card) {
+            const overlay = document.getElementById('overlay');
+            
+            // Clone the card for expansion
+            const expandedCard = card.cloneNode(true);
+            expandedCard.classList.add('expanded');
+            
+            // Add to body
+            document.body.appendChild(expandedCard);
+            overlay.classList.add('active');
+            
+            // Prevent body scroll
+            document.body.style.overflow = 'hidden';
+            
+            // Close on overlay click
+            overlay.onclick = () => closeExpandedCard(expandedCard);
+            
+            // Close on escape key
+            document.addEventListener('keydown', function escapeHandler(e) {
+                if (e.key === 'Escape') {
+                    closeExpandedCard(expandedCard);
+                    document.removeEventListener('keydown', escapeHandler);
+                }
+            });
+        }
+
+        // Close expanded card
+        function closeExpandedCard(expandedCard) {
+            const overlay = document.getElementById('overlay');
+            expandedCard.remove();
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
         }
 
         // Filter functionality
@@ -511,21 +953,6 @@
                 renderContent(e.target.dataset.filter);
             });
         });
-
-        // Create animated particles
-        function createParticles() {
-            const particlesContainer = document.getElementById('particles');
-            const particleCount = 50;
-            
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.animationDelay = Math.random() * 20 + 's';
-                particle.style.animationDuration = (15 + Math.random() * 10) + 's';
-                particlesContainer.appendChild(particle);
-            }
-        }
 
         // Theme toggle functionality
         function toggleTheme() {
@@ -543,8 +970,161 @@
 
         // Initialize
         loadTheme();
-        createParticles();
         renderContent();
+
+        // Easter Egg: Triple-click the title to open content manager
+        let clickCount = 0;
+        let clickTimer = null;
+        
+        document.querySelector('h1').addEventListener('click', function(e) {
+            e.preventDefault();
+            clickCount++;
+            
+            if (clickTimer) {
+                clearTimeout(clickTimer);
+            }
+            
+            clickTimer = setTimeout(() => {
+                clickCount = 0;
+            }, 500);
+            
+            if (clickCount === 3) {
+                clickCount = 0;
+                openManager();
+            }
+        });
+
+        // Content Manager Functions
+        function openManager() {
+            const modal = document.getElementById('manager-modal');
+            const editor = document.getElementById('content-editor');
+            
+            // Clear and populate editor
+            editor.innerHTML = '';
+            content.forEach((item, index) => {
+                editor.appendChild(createItemEditor(item, index));
+            });
+            
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeManager() {
+            const modal = document.getElementById('manager-modal');
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+            document.getElementById('code-output').classList.remove('active');
+            document.getElementById('copy-btn').style.display = 'none';
+        }
+
+        function createItemEditor(item, index) {
+            const div = document.createElement('div');
+            div.className = 'content-item';
+            div.innerHTML = `
+                <h4>Item ${index + 1}</h4>
+                <input type="text" placeholder="Title" value="${item.title}" data-field="title" data-index="${index}">
+                <textarea placeholder="Summary" data-field="summary" data-index="${index}">${item.summary}</textarea>
+                <textarea placeholder="Full Description" data-field="fullDescription" data-index="${index}">${item.fullDescription}</textarea>
+                <input type="text" placeholder="URL" value="${item.url}" data-field="url" data-index="${index}">
+                <div class="field-group triple">
+                    <select data-field="platform" data-index="${index}">
+                        <option value="claude" ${item.platform === 'claude' ? 'selected' : ''}>Claude</option>
+                        <option value="chatgpt" ${item.platform === 'chatgpt' ? 'selected' : ''}>ChatGPT</option>
+                        <option value="gemini" ${item.platform === 'gemini' ? 'selected' : ''}>Gemini</option>
+                    </select>
+                    <select data-field="category" data-index="${index}">
+                        <option value="experiment" ${item.category === 'experiment' ? 'selected' : ''}>Experiment</option>
+                        <option value="prompt" ${item.category === 'prompt' ? 'selected' : ''}>Prompt</option>
+                        <option value="visualization" ${item.category === 'visualization' ? 'selected' : ''}>Visualization</option>
+                    </select>
+                    <button class="remove-item-btn" onclick="removeItem(${index})">Remove</button>
+                </div>
+                <input type="text" class="tags-input" placeholder="Tags (comma-separated)" value="${item.tags.join(', ')}" data-field="tags" data-index="${index}">
+            `;
+            
+            // Add change listeners
+            div.querySelectorAll('input, textarea, select').forEach(field => {
+                field.addEventListener('input', updateContentItem);
+            });
+            
+            return div;
+        }
+
+        function updateContentItem(e) {
+            const index = parseInt(e.target.dataset.index);
+            const field = e.target.dataset.field;
+            
+            if (field === 'tags') {
+                content[index][field] = e.target.value.split(',').map(tag => tag.trim());
+            } else {
+                content[index][field] = e.target.value;
+            }
+        }
+
+        function removeItem(index) {
+            content.splice(index, 1);
+            openManager(); // Refresh the manager
+        }
+
+        function addNewItem() {
+            const newItem = {
+                title: "New Project",
+                summary: "Brief description here",
+                fullDescription: "Full description of your project goes here",
+                url: "https://example.com",
+                platform: "claude",
+                category: "experiment",
+                tags: ["tag1", "tag2"]
+            };
+            content.push(newItem);
+            openManager(); // Refresh the manager
+        }
+
+        function generateCode() {
+            const output = document.getElementById('code-output');
+            const copyBtn = document.getElementById('copy-btn');
+            
+            // Format the content array as a string
+            const formattedContent = JSON.stringify(content, null, 4)
+                .split('\n')
+                .map(line => '        ' + line) // Add proper indentation
+                .join('\n')
+                .substring(8); // Remove extra indentation from first line
+            
+            const code = `// ========== START CONTENT ARRAY ==========
+        // Replace everything between START and END markers when updating
+        // Content data - Easy to update by adding new items to this array
+        const content = ${formattedContent};
+        // ========== END CONTENT ARRAY ==========`;
+            
+            output.textContent = code;
+            output.classList.add('active');
+            copyBtn.style.display = 'inline-block';
+        }
+
+        function copyCode() {
+            const output = document.getElementById('code-output');
+            const text = output.textContent;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                // Show success message
+                const successMsg = document.createElement('div');
+                successMsg.className = 'copy-success';
+                successMsg.textContent = '✅ Copied to clipboard';
+                document.body.appendChild(successMsg);
+                
+                setTimeout(() => {
+                    successMsg.remove();
+                }, 2000);
+            }).catch(err => {
+                alert('Failed to copy code. Please select and copy manually.');
+            });
+        }
+
+        // Close manager on ESC key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && document.getElementById('manager-modal').classList.contains('active')) {
+                closeManager();
+            }
+        });
     </script>
-</body>
-</html>
