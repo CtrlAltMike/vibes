@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vibes.hendrick.net - Coding Experiments & Prompts</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0a0e1a;
+            --bg-secondary: #141925;
+            --bg-card: #1a1f2e;
+            --text-primary: #e8eaed;
+            --text-secondary: #9aa0a6;
+            --accent: #7c3aed;
+            --accent-hover: #9333ea;
+            --border: #2d3748;
+            --glow: #a78bfa;
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #f8f9fa;
+            --bg-secondary: #e9ecef;
+            --bg-card: #ffffff;
+            --text-primary: #212529;
+            --text-secondary: #6c757d;
+            --accent: #7c3aed;
+            --accent-hover: #6d28d9;
+            --border: #dee2e6;
+            --glow: #c4b5fd;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Theme toggle styles */
+        .theme-toggle {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 25px;
+            padding: 0.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(124, 58, 237, 0.2);
+        }
+
+        .toggle-slider {
+            width: 50px;
+            height: 24px;
+            background: var(--border);
+            border-radius: 12px;
+            position: relative;
+            transition: background 0.3s ease;
+        }
+
+        .toggle-slider::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--text-primary);
+            border-radius: 50%;
+            top: 2px;
+            left: 2px;
+            transition: transform 0.3s ease;
+        }
+
+        [data-theme="light"] .toggle-slider::after {
+            transform: translateX(26px);
+        }
+
+        [data-theme="light"] .toggle-slider {
+            background: var(--accent);
+        }
+
+        .theme-icon {
+            font-size: 1.2rem;
+        }
+
+        /* Animated background particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.4;
+        }
+
+        [data-theme="light"] .particles {
+            opacity: 0.2;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--glow);
+            border-radius: 50%;
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100px);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 4rem;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 3rem;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--glow) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            text-shadow: 0 0 40px rgba(124, 58, 237, 0.3);
+            display: inline-block;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        h1:hover {
+            animation: vibe 0.5s ease-in-out infinite;
+        }
+
+        @keyframes vibe {
+            0%, 100% { transform: translateX(0) rotate(0deg); }
+            10% { transform: translateX(-2px) rotate(-1deg); }
+            20% { transform: translateX(2px) rotate(1deg); }
+            30% { transform: translateX(-2px) rotate(-1deg); }
+            40% { transform: translateX(2px) rotate(1deg); }
+            50% { transform: translateX(-1px) rotate(-0.5deg); }
+            60% { transform: translateX(1px) rotate(0.5deg); }
+            70% { transform: translateX(-1px) rotate(-0.5deg); }
+            80% { transform: translateX(1px) rotate(0.5deg); }
+            90% { transform: translateX(0) rotate(0deg); }
+        }
+
+        .tagline {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .filters {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            animation: fadeIn 1s ease-out 0.3s backwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .filter-btn:hover {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(124, 58, 237, 0.3);
+        }
+
+        .filter-btn.active {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            animation: fadeInUp 1s ease-out 0.5s backwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(135deg, var(--accent), var(--glow));
+            border-radius: 12px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .card:hover::before {
+            opacity: 0.3;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            color: var(--text-primary);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            flex: 1;
+        }
+
+        .platform-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        .platform-claude {
+            background: rgba(196, 155, 122, 0.2);
+            color: #c49b7a;
+            border: 1px solid rgba(196, 155, 122, 0.3);
+        }
+
+        .platform-chatgpt {
+            background: rgba(116, 185, 145, 0.2);
+            color: #74b991;
+            border: 1px solid rgba(116, 185, 145, 0.3);
+        }
+
+        .platform-gemini {
+            background: rgba(66, 133, 244, 0.2);
+            color: #4285f4;
+            border: 1px solid rgba(66, 133, 244, 0.3);
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .card-link:hover {
+            color: var(--accent-hover);
+            gap: 0.75rem;
+        }
+
+        .card-link::after {
+            content: '→';
+            transition: transform 0.3s ease;
+        }
+
+        .card-link:hover::after {
+            transform: translateX(5px);
+        }
+
+        .tags {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            padding: 0.25rem 0.75rem;
+            background: rgba(124, 58, 237, 0.1);
+            border: 1px solid rgba(124, 58, 237, 0.2);
+            border-radius: 15px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="particles" id="particles"></div>
+    
+    <!-- Theme Toggle -->
+    <div class="theme-toggle" onclick="toggleTheme()">
+        <span class="theme-icon">🌙</span>
+        <div class="toggle-slider"></div>
+        <span class="theme-icon">☀️</span>
+    </div>
+    
+    <div class="container">
+        <header>
+            <h1>vibes.hendrick.net</h1>
+            <p class="tagline">Coding Experiments & Creative Prompts</p>
+        </header>
+
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="experiment">Experiments</button>
+            <button class="filter-btn" data-filter="prompt">Prompts</button>
+            <button class="filter-btn" data-filter="visualization">Visualizations</button>
+        </div>
+
+        <div class="grid" id="content-grid">
+            <!-- Content will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <script>
+        // Content data - Easy to update by adding new items to this array
+        const content = [
+            {
+                title: "Interactive Particle System",
+                summary: "A mesmerizing particle simulation with gravitational physics and color transitions. Watch as particles dance and interact in real-time.",
+                url: "https://claude.ai/share/example1",
+                platform: "claude",
+                category: "experiment",
+                tags: ["physics", "animation", "webgl"]
+            },
+            {
+                title: "AI Story Generator Prompt",
+                summary: "A creative writing prompt that generates compelling narratives with rich character development and unexpected plot twists.",
+                url: "https://chatgpt.com/share/example2",
+                platform: "chatgpt",
+                category: "prompt",
+                tags: ["creative", "storytelling", "ai"]
+            },
+            {
+                title: "Data Flow Visualization",
+                summary: "Real-time visualization of data structures and algorithms using D3.js. Perfect for understanding complex sorting and searching algorithms.",
+                url: "https://claude.ai/share/example3",
+                platform: "claude",
+                category: "visualization",
+                tags: ["d3js", "algorithms", "education"]
+            },
+            {
+                title: "Recursive Art Generator",
+                summary: "Generates beautiful fractal patterns using recursive algorithms. Each iteration creates unique, mathematically-driven artwork.",
+                url: "https://g.co/gemini/share/example4",
+                platform: "gemini",
+                category: "experiment",
+                tags: ["fractals", "generative", "math"]
+            },
+            {
+                title: "Code Review Assistant",
+                summary: "An intelligent prompt for comprehensive code reviews, identifying potential bugs, suggesting optimizations, and ensuring best practices.",
+                url: "https://claude.ai/share/example5",
+                platform: "claude",
+                category: "prompt",
+                tags: ["development", "review", "productivity"]
+            },
+            {
+                title: "Music Visualizer",
+                summary: "Audio-reactive visualization that responds to music in real-time, creating stunning visual experiences synchronized with sound.",
+                url: "https://chatgpt.com/share/example6",
+                platform: "chatgpt",
+                category: "visualization",
+                tags: ["audio", "graphics", "interactive"]
+            }
+        ];
+
+        // Render content cards
+        function renderContent(filter = 'all') {
+            const grid = document.getElementById('content-grid');
+            const filteredContent = filter === 'all' 
+                ? content 
+                : content.filter(item => item.category === filter);
+            
+            grid.innerHTML = filteredContent.map(item => `
+                <div class="card">
+                    <div class="card-header">
+                        <h3>${item.title}</h3>
+                        <span class="platform-badge platform-${item.platform}">${item.platform}</span>
+                    </div>
+                    <p>${item.summary}</p>
+                    <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="card-link">
+                        View Project
+                    </a>
+                    <div class="tags">
+                        ${item.tags.map(tag => `<span class="tag">#${tag}</span>`).join('')}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Filter functionality
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                renderContent(e.target.dataset.filter);
+            });
+        });
+
+        // Create animated particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 20 + 's';
+                particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Theme toggle functionality
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        }
+
+        // Load saved theme
+        function loadTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        }
+
+        // Initialize
+        loadTheme();
+        createParticles();
+        renderContent();
+    </script>
+</body>
+</html>
