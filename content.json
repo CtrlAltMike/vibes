@@ -1,0 +1,26 @@
+[
+  {
+    "title": "IKON Pass Resort Dashboard",
+    "summary": "This is an interactive ski resort dashboard for IKON Pass destinations that helps skiers compare and choose resorts.\n",
+    "fullDescription": "Main Features\nThe interface displays cards for 10 major resorts across North America, showing key stats like:\n\nAverage snowfall\nNumber of lifts\nAccommodation prices\nSki season dates\n\nEach card includes a mini chart visualizing snowfall patterns and crowd levels throughout the year.\nFiltering & Search\nUsers can filter resorts using controls at the top by:\n\nRegion (Colorado, Utah, California, etc.)\nDifficulty level (beginner to expert)\nMinimum snowfall requirements\nMaximum nightly rates\n\nDetailed Views\nClicking on any resort card opens a detailed modal with:\n\nAdditional resort information (skiable acres, trail count, elevation data)\nA comprehensive chart showing monthly snowfall, rainfall, and crowd percentages\n\nDesign\nThe dashboard uses a modern glassmorphism design with a purple gradient background and smooth animations, making it both functional and visually appealing for trip planning.",
+    "url": "https://claude.ai/public/artifacts/3a761ebc-0061-44e3-ab7c-06fbf2e5bc85",
+    "platform": "claude",
+    "category": "experiment",
+    "tags": [
+      "glassmorphism",
+      "animation"
+    ]
+  },
+  {
+    "title": "Sample Project",
+    "summary": "This is a sample project that loads when content.json is not found.",
+    "fullDescription": "# Sample Project\n\nThis is a **default sample** that appears when `content.json` is not found.\n\n## Features\n- Markdown support\n- Easy to customize\n- Clean design\n\n> Replace this with your own content by creating a content.json file!",
+    "url": "https://example.com",
+    "platform": "claude",
+    "category": "experiment",
+    "tags": [
+      "sample",
+      "test"
+    ]
+  }
+]
