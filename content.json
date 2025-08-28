@@ -36,5 +36,16 @@
       "timer",
       "team"
     ]
+  },
+  {
+    "title": "Interactive Particle System",
+    "summary": "A mesmerizing visual experience featuring hundreds of animated particles that dance across your screen and respond to your mouse movements in real-time.",
+    "fullDescription": "# Interactive Particle System\n\n## What is it?\nA mesmerizing visual experience featuring hundreds of animated particles that dance across your screen and respond to your mouse movements in real-time.\n\n## How to interact\n- **Move your mouse** anywhere on the screen to watch particles scatter away from your cursor\n- **Hold still** to see particles gradually return to their natural flowing patterns\n- **Works on touch devices** too - just drag your finger across the screen\n\n## Customize your experience\nUse the controls in the bottom-left corner to adjust:\n\n- **Particles** (50-2000) - More particles = denser, more complex patterns\n- **Speed** - How fast particles move and orbit\n- **Size** - Make particles bigger or smaller\n- **Connections** - How far apart particles can be while still connecting with lines\n- **Rainbow Mode** - Toggle between white particles and a colorful, shifting spectrum\n\n## What you'll see\n- Particles that move in gentle orbital patterns\n- Dynamic connections that form between nearby particles\n- Fluid, organic networks that constantly shift and evolve\n- Responsive behavior as particles react to your presence\n\nPerfect for relaxation, creative inspiration, or just enjoying some beautiful digital art that responds to your touch!",
+    "url": "https://claude.ai/public/artifacts/2e393fd9-9982-46d9-9396-0fb387bafb97",
+    "platform": "claude",
+    "category": "visualization",
+    "tags": [
+      ""
+    ]
   }
 ]
