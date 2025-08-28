@@ -2,7 +2,7 @@
   {
     "title": "IKON Pass Resort Dashboard",
     "summary": "This is an interactive ski resort dashboard for IKON Pass destinations that helps skiers compare and choose resorts.\n",
-    "fullDescription": "Main Features\nThe interface displays cards for 10 major resorts across North America, showing key stats like:\n\nAverage snowfall\nNumber of lifts\nAccommodation prices\nSki season dates\n\nEach card includes a mini chart visualizing snowfall patterns and crowd levels throughout the year.\nFiltering & Search\nUsers can filter resorts using controls at the top by:\n\nRegion (Colorado, Utah, California, etc.)\nDifficulty level (beginner to expert)\nMinimum snowfall requirements\nMaximum nightly rates\n\nDetailed Views\nClicking on any resort card opens a detailed modal with:\n\nAdditional resort information (skiable acres, trail count, elevation data)\nA comprehensive chart showing monthly snowfall, rainfall, and crowd percentages\n\nDesign\nThe dashboard uses a modern glassmorphism design with a purple gradient background and smooth animations, making it both functional and visually appealing for trip planning.",
+    "fullDescription": "**Main Features**\n\nThe interface displays cards for 10 major resorts across North America, showing key stats like:\n\n- Average snowfall\n- Number of lifts\n- Accommodation prices\n- Ski season dates\n\nEach card includes a mini chart visualizing snowfall patterns and crowd levels throughout the year.\n\n**Filtering & Search**\n\nUsers can filter resorts using controls at the top by:\n\n- Region (Colorado, Utah, California, etc.)\n- Difficulty level (beginner to expert)\n- Minimum snowfall requirements\n- Maximum nightly rates\n\n**Detailed Views**\n\nClicking on any resort card opens a detailed modal with:\n\n- Additional resort information (skiable acres, trail count, elevation data)\n- A comprehensive chart showing monthly snowfall, rainfall, and crowd percentages\n\n**Design**\n\nThe dashboard uses a modern glassmorphism design with a purple gradient background and smooth animations, making it both functional and visually appealing for trip planning.",
     "url": "https://claude.ai/public/artifacts/3a761ebc-0061-44e3-ab7c-06fbf2e5bc85",
     "platform": "claude",
     "category": "experiment",
@@ -12,15 +12,15 @@
     ]
   },
   {
-    "title": "Sample Project",
-    "summary": "This is a sample project that loads when content.json is not found.",
-    "fullDescription": "# Sample Project\n\nThis is a **default sample** that appears when `content.json` is not found.\n\n## Features\n- Markdown support\n- Easy to customize\n- Clean design\n\n> Replace this with your own content by creating a content.json file!",
-    "url": "https://example.com",
+    "title": "The Big Context Picture",
+    "summary": "**Every major tech company now has multiple AI models**, and they're in an arms race. The chart tracks 22 different models across 5 companies as of August 2025. These are the same AI systems that power ChatGPT, Claude, Gemini, and other assistants you might use.\n",
+    "fullDescription": "## What This Chart Shows You\n\nThink of this as a **menu of the most powerful AI assistants** available today - like comparing the latest smartphones, but for AI chatbots and coding assistants.\n\n\n### What the Numbers Mean\n\n**Context Window** = How much text the AI can \"remember\" in a single conversation\n- **128k tokens** ≈ A short novel (about 100,000 words)\n- **200k tokens** ≈ Harry Potter and the Sorcerer's Stone\n- **400k tokens** ≈ The entire Lord of the Rings trilogy  \n- **1M tokens** ≈ About 10 novels or 800,000 words\n- **10M tokens** ≈ An entire library shelf\n\nBigger context = the AI can work with longer documents, remember more of your conversation, and handle complex projects better.\n\n### Key Takeaways\n\n1. **OpenAI (ChatGPT)** has the newest GPT-5 with 400,000 token memory - a huge upgrade from earlier versions\n\n2. **Google's Gemini 2.5** models all have massive 1 million token contexts - they can read entire codebases or book series\n\n3. **The verification badges matter** - Green means the specs are accurate, yellow means the marketing doesn't match reality (looking at you, Grok 3), and orange means users are reporting problems\n\n4. **Not all claims are true** - xAI claims Grok 3 has 1 million token memory, but it actually caps at 131,000. Meta's Llama 4 supposedly beats everyone on benchmarks but users say it performs poorly.\n\n5. **These are all available now** - If you're using ChatGPT, Claude, Gemini, or other AI tools, you're likely using one of these models.\n\n### Why This Matters\n\nIf you're choosing an AI assistant for work or personal use, this chart helps you understand what you're actually getting versus what's being advertised. It's like a consumer reports guide for AI - cutting through marketing hype to show real capabilities.\n\nThe rapid evolution (GPT-5 and Claude 4 didn't exist 6 months ago!) shows how fast this technology is advancing. What required a supercomputer five years ago now runs on your phone.",
+    "url": "https://claude.ai/public/artifacts/8d577a3d-dcc3-4d0d-9285-94d8678993c2",
     "platform": "claude",
-    "category": "experiment",
+    "category": "visualization",
     "tags": [
-      "sample",
-      "test"
+      "context windows",
+      ""
     ]
   }
 ]
