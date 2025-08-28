@@ -925,6 +925,9 @@
     <div class="bg-gradient"></div>
     <div class="overlay" id="overlay"></div>
     
+    <!-- Version Badge -->
+    <div class="version-badge">v<span id="version-number">1.2.1</span></div>
+    
     <!-- Content Manager Modal (Hidden Easter Egg) -->
     <div class="manager-modal" id="manager-modal">
         <div class="manager-content">
@@ -935,6 +938,16 @@
                     <button class="manager-btn" id="copy-btn" onclick="copyCode()" style="display: none;">Copy content.json</button>
                     <button class="manager-btn secondary" onclick="closeManager()">Close</button>
                 </div>
+            </div>
+            <!-- Categories Manager -->
+            <div class="categories-section">
+                <div class="categories-header">
+                    <h3 class="categories-title">Categories</h3>
+                </div>
+                <div class="categories-list" id="categories-list">
+                    <!-- Categories will be dynamically added here -->
+                </div>
+                <button class="add-category-btn" onclick="addCategory()">+ Add Category</button>
             </div>
             <div class="content-editor" id="content-editor">
                 <!-- Dynamic content forms will be inserted here -->
@@ -980,11 +993,14 @@
     </div>
 
     <script>
+        // Version number
+        const VERSION = "1.2.0";
+
         // Default content for testing when content.json doesn't exist
         const defaultContent = [
             {
                 title: "Sample Project",
-                summary: "This is a sample project that loads when content.json is not found.",
+                summary: "This is a **sample project** that loads when `content.json` is not found.",
                 fullDescription: "# Sample Project\n\nThis is a **default sample** that appears when `content.json` is not found.\n\n## Features\n- Markdown support\n- Easy to customize\n- Clean design\n\n> Replace this with your own content by creating a content.json file!",
                 url: "https://example.com",
                 platform: "claude",
@@ -993,13 +1009,20 @@
             },
             {
                 title: "Getting Started",
-                summary: "Create a content.json file in the same directory as index.html",
-                fullDescription: "# Getting Started\n\nTo add your own content:\n\n1. Create a file named `content.json`\n2. Place it in the same directory as `index.html`\n3. Structure it as an array of objects\n4. Each object should have:\n   - `title`\n   - `summary`\n   - `fullDescription` (supports markdown)\n   - `url`\n   - `platform` (claude/chatgpt/gemini)\n   - `category` (experiment/prompt/visualization)\n   - `tags` (array of strings)\n\n---\n\nThe content will automatically load when you refresh the page!",
+                summary: "Create a `content.json` file in the same directory as index.html",
+                fullDescription: "# Getting Started\n\nTo add your own content:\n\n1. Create a file named `content.json`\n2. Place it in the same directory as `index.html`\n3. Structure it as an array of objects\n4. Each object should have:\n   - `title`\n   - `summary` (supports markdown)\n   - `fullDescription` (supports markdown)\n   - `url`\n   - `platform` (claude/chatgpt/gemini)\n   - `category`\n   - `tags` (array of strings)\n\n---\n\nThe content will automatically load when you refresh the page!",
                 url: "https://github.com",
                 platform: "chatgpt",
                 category: "prompt",
                 tags: ["help", "guide"]
             }
+        ];
+
+        // Categories configuration - editable in manager, but not by viewers
+        let categories = [
+            { id: "experiment", label: "Experiments" },
+            { id: "prompt", label: "Prompts" },
+            { id: "visualization", label: "Visualizations" }
         ];
 
         // Global content variable
@@ -1011,7 +1034,15 @@
                 const response = await fetch('./content.json');
                 if (response.ok) {
                     const data = await response.json();
-                    content = data;
+                    
+                    // Check if data has categories
+                    if (data.categories && Array.isArray(data.categories)) {
+                        categories = data.categories;
+                    }
+                    
+                    // Load content items
+                    content = data.items || data; // Support both {items: [...]} and direct array
+                    
                     console.log('✅ Loaded content from content.json');
                 } else {
                     throw new Error('content.json not found');
@@ -1023,6 +1054,27 @@
             
             // Initial render
             renderContent();
+            renderFilters();
+        }
+
+        // Render filter buttons based on categories
+        function renderFilters() {
+            const filtersContainer = document.querySelector('.filters');
+            filtersContainer.innerHTML = `
+                <button class="filter-btn active" data-filter="all">All</button>
+                ${categories.map(cat => 
+                    `<button class="filter-btn" data-filter="${cat.id}">${cat.label}</button>`
+                ).join('')}
+            `;
+            
+            // Re-attach event listeners
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    e.target.classList.add('active');
+                    renderContent(e.target.dataset.filter);
+                });
+            });
         }
 
         // Simple markdown parser
@@ -1100,7 +1152,7 @@
                         <h3>${item.title}</h3>
                         <span class="platform-badge platform-${item.platform}">${item.platform}</span>
                     </div>
-                    <p class="card-summary">${item.summary}</p>
+                    <p class="card-summary">${parseMarkdown(item.summary)}</p>
                     <div class="card-content" style="display: none;">${parseMarkdown(item.fullDescription)}</div>
                     <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="card-link" onclick="event.stopPropagation()">
                         View Project
@@ -1198,6 +1250,7 @@
         }
 
         // Initialize
+        document.getElementById('version-number').textContent = VERSION;
         loadTheme();
         loadContent(); // Load content asynchronously
 
@@ -1227,6 +1280,13 @@
         function openManager() {
             const modal = document.getElementById('manager-modal');
             const editor = document.getElementById('content-editor');
+            const categoriesList = document.getElementById('categories-list');
+            
+            // Render categories
+            categoriesList.innerHTML = '';
+            categories.forEach((cat, index) => {
+                categoriesList.appendChild(createCategoryEditor(cat, index));
+            });
             
             // Clear and populate editor
             editor.innerHTML = '';
@@ -1236,6 +1296,47 @@
             
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
+        }
+
+        // Category management functions
+        function createCategoryEditor(category, index) {
+            const div = document.createElement('div');
+            div.className = 'category-item';
+            div.innerHTML = `
+                <input type="text" placeholder="ID" value="${category.id}" data-cat-field="id" data-cat-index="${index}">
+                <input type="text" placeholder="Label" value="${category.label}" data-cat-field="label" data-cat-index="${index}">
+                <button class="category-remove" onclick="removeCategory(${index})">Remove</button>
+            `;
+            
+            // Add change listeners
+            div.querySelectorAll('input').forEach(field => {
+                field.addEventListener('input', updateCategory);
+            });
+            
+            return div;
+        }
+
+        function updateCategory(e) {
+            const index = parseInt(e.target.dataset.catIndex);
+            const field = e.target.dataset.catField;
+            categories[index][field] = e.target.value;
+        }
+
+        function addCategory() {
+            categories.push({
+                id: `category_${Date.now()}`,
+                label: 'New Category'
+            });
+            openManager(); // Refresh
+        }
+
+        function removeCategory(index) {
+            if (categories.length <= 1) {
+                alert('You must have at least one category');
+                return;
+            }
+            categories.splice(index, 1);
+            openManager(); // Refresh
         }
 
         function closeManager() {
@@ -1272,9 +1373,9 @@
                         <option value="gemini" ${item.platform === 'gemini' ? 'selected' : ''}>Gemini</option>
                     </select>
                     <select data-field="category" data-index="${index}">
-                        <option value="experiment" ${item.category === 'experiment' ? 'selected' : ''}>Experiment</option>
-                        <option value="prompt" ${item.category === 'prompt' ? 'selected' : ''}>Prompt</option>
-                        <option value="visualization" ${item.category === 'visualization' ? 'selected' : ''}>Visualization</option>
+                        ${categories.map(cat => 
+                            `<option value="${cat.id}" ${item.category === cat.id ? 'selected' : ''}>${cat.label}</option>`
+                        ).join('')}
                     </select>
                     <button class="remove-item-btn" onclick="removeItem(${index})">Remove</button>
                 </div>
@@ -1418,8 +1519,14 @@
             const copyBtn = document.getElementById('copy-btn');
             const instructions = document.getElementById('manager-instructions');
             
-            // Format the content array as a JSON file with pretty printing
-            const formattedContent = JSON.stringify(content, null, 2);
+            // Create the data structure with categories
+            const dataStructure = {
+                categories: categories,
+                items: content
+            };
+            
+            // Format as JSON with pretty printing
+            const formattedContent = JSON.stringify(dataStructure, null, 2);
             
             output.textContent = formattedContent;
             output.classList.add('active');
