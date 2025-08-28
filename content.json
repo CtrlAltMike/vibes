@@ -1,51 +1,82 @@
-[
-  {
-    "title": "IKON Pass Resort Dashboard",
-    "summary": "This is an interactive ski resort dashboard for IKON Pass destinations that helps skiers compare and choose resorts.\n",
-    "fullDescription": "**Main Features**\n\nThe interface displays cards for 10 major resorts across North America, showing key stats like:\n\n- Average snowfall\n- Number of lifts\n- Accommodation prices\n- Ski season dates\n\nEach card includes a mini chart visualizing snowfall patterns and crowd levels throughout the year.\n\n**Filtering & Search**\n\nUsers can filter resorts using controls at the top by:\n\n- Region (Colorado, Utah, California, etc.)\n- Difficulty level (beginner to expert)\n- Minimum snowfall requirements\n- Maximum nightly rates\n\n**Detailed Views**\n\nClicking on any resort card opens a detailed modal with:\n\n- Additional resort information (skiable acres, trail count, elevation data)\n- A comprehensive chart showing monthly snowfall, rainfall, and crowd percentages\n\n**Design**\n\nThe dashboard uses a modern glassmorphism design with a purple gradient background and smooth animations, making it both functional and visually appealing for trip planning.",
-    "url": "https://claude.ai/public/artifacts/3a761ebc-0061-44e3-ab7c-06fbf2e5bc85",
-    "platform": "claude",
-    "category": "experiment",
-    "tags": [
-      "glassmorphism",
-      "animation"
-    ]
-  },
-  {
-    "title": "The Big Context Picture",
-    "summary": "**Every major tech company now has multiple AI models**, and they're in an arms race. The chart tracks 22 different models across 5 companies as of August 2025. These are the same AI systems that power ChatGPT, Claude, Gemini, and other assistants you might use.\n",
-    "fullDescription": "## What This Chart Shows You\n\nThink of this as a **menu of the most powerful AI assistants** available today - like comparing the latest smartphones, but for AI chatbots and coding assistants.\n\n\n### What the Numbers Mean\n\n**Context Window** = How much text the AI can \"remember\" in a single conversation\n- **128k tokens** ≈ A short novel (about 100,000 words)\n- **200k tokens** ≈ Harry Potter and the Sorcerer's Stone\n- **400k tokens** ≈ The entire Lord of the Rings trilogy  \n- **1M tokens** ≈ About 10 novels or 800,000 words\n- **10M tokens** ≈ An entire library shelf\n\nBigger context = the AI can work with longer documents, remember more of your conversation, and handle complex projects better.\n\n### Key Takeaways\n\n1. **OpenAI (ChatGPT)** has the newest GPT-5 with 400,000 token memory - a huge upgrade from earlier versions\n\n2. **Google's Gemini 2.5** models all have massive 1 million token contexts - they can read entire codebases or book series\n\n3. **The verification badges matter** - Green means the specs are accurate, yellow means the marketing doesn't match reality (looking at you, Grok 3), and orange means users are reporting problems\n\n4. **Not all claims are true** - xAI claims Grok 3 has 1 million token memory, but it actually caps at 131,000. Meta's Llama 4 supposedly beats everyone on benchmarks but users say it performs poorly.\n\n5. **These are all available now** - If you're using ChatGPT, Claude, Gemini, or other AI tools, you're likely using one of these models.\n\n### Why This Matters\n\nIf you're choosing an AI assistant for work or personal use, this chart helps you understand what you're actually getting versus what's being advertised. It's like a consumer reports guide for AI - cutting through marketing hype to show real capabilities.\n\nThe rapid evolution (GPT-5 and Claude 4 didn't exist 6 months ago!) shows how fast this technology is advancing. What required a supercomputer five years ago now runs on your phone.",
-    "url": "https://claude.ai/public/artifacts/8d577a3d-dcc3-4d0d-9285-94d8678993c2",
-    "platform": "claude",
-    "category": "visualization",
-    "tags": [
-      "context windows",
-      ""
-    ]
-  },
-  {
-    "title": "Scrum Timer with Collaboration Tracker 🕐",
-    "summary": "A sleek, web-based timer designed specifically for **daily standup meetings** that helps teams stay on track and capture collaboration needs.\n",
-    "fullDescription": "## What it does\n\n### ⏱️ Visual Timer\n- Beautiful analog clock face that shows time remaining at a glance\n- Preset options for 1, 2, or 3-minute standups\n- Visual alerts when time is running low (flashing in final 10 seconds)\n- Smooth animations with a professional \"watch-like\" aesthetic\n\n### 📋 Built-in Standup Questions\nDisplays the four key daily standup questions:\n1. What did you accomplish yesterday?\n2. What will you work on today? \n3. Are there any blockers or impediments?\n4. Do you need a collaboration? (With whom?)\n\n### 🤝 Collaboration Tracker\n- Capture who needs to collaborate with whom during the standup\n- Quick entry system that handles names with spaces\n- One-click copy formatted for Slack/Teams\n- Keeps running list throughout the meeting\n\n### 🎯 Key Features\n- **Keyboard shortcuts**: Space to start/pause, R to reset, 1-3 for presets\n- **Fully responsive**: Works great on desktop, tablet, and mobile\n- **No installation needed**: Just open in a browser\n- **Clean, modern UI** with glassmorphic design elements\n\nPerfect for Scrum Masters, team leads, or anyone running daily standups who wants to keep meetings focused and capture important collaboration needs without interrupting the flow.",
-    "url": "https://claude.ai/public/artifacts/e6154a87-08d9-48bf-bf47-c6b19f088722",
-    "platform": "claude",
-    "category": "visualization",
-    "tags": [
-      "scrum",
-      "agile",
-      "timer",
-      "team"
-    ]
-  },
-  {
-    "title": "Interactive Particle System",
-    "summary": "A mesmerizing visual experience featuring hundreds of animated particles that dance across your screen and respond to your mouse movements in real-time.",
-    "fullDescription": "# Interactive Particle System\n\n## What is it?\nA mesmerizing visual experience featuring hundreds of animated particles that dance across your screen and respond to your mouse movements in real-time.\n\n## How to interact\n- **Move your mouse** anywhere on the screen to watch particles scatter away from your cursor\n- **Hold still** to see particles gradually return to their natural flowing patterns\n- **Works on touch devices** too - just drag your finger across the screen\n\n## Customize your experience\nUse the controls in the bottom-left corner to adjust:\n\n- **Particles** (50-2000) - More particles = denser, more complex patterns\n- **Speed** - How fast particles move and orbit\n- **Size** - Make particles bigger or smaller\n- **Connections** - How far apart particles can be while still connecting with lines\n- **Rainbow Mode** - Toggle between white particles and a colorful, shifting spectrum\n\n## What you'll see\n- Particles that move in gentle orbital patterns\n- Dynamic connections that form between nearby particles\n- Fluid, organic networks that constantly shift and evolve\n- Responsive behavior as particles react to your presence\n\nPerfect for relaxation, creative inspiration, or just enjoying some beautiful digital art that responds to your touch!",
-    "url": "https://claude.ai/public/artifacts/2e393fd9-9982-46d9-9396-0fb387bafb97",
-    "platform": "claude",
-    "category": "visualization",
-    "tags": [
-      ""
-    ]
-  }
-]
+{
+  "categories": [
+    {
+      "id": "experiment",
+      "label": "Experiments"
+    },
+    {
+      "id": "prompt",
+      "label": "Prompts"
+    },
+    {
+      "id": "visualization",
+      "label": "Visualizations"
+    },
+    {
+      "id": "code_artifact",
+      "label": "Code Artifact"
+    }
+  ],
+  "items": [
+    {
+      "title": "IKON Pass Resort Dashboard",
+      "summary": "This is an interactive ski resort dashboard for IKON Pass destinations that helps skiers compare and choose resorts.\n",
+      "fullDescription": "**Main Features**\n\nThe interface displays cards for 10 major resorts across North America, showing key stats like:\n\n- Average snowfall\n- Number of lifts\n- Accommodation prices\n- Ski season dates\n\nEach card includes a mini chart visualizing snowfall patterns and crowd levels throughout the year.\n\n**Filtering & Search**\n\nUsers can filter resorts using controls at the top by:\n\n- Region (Colorado, Utah, California, etc.)\n- Difficulty level (beginner to expert)\n- Minimum snowfall requirements\n- Maximum nightly rates\n\n**Detailed Views**\n\nClicking on any resort card opens a detailed modal with:\n\n- Additional resort information (skiable acres, trail count, elevation data)\n- A comprehensive chart showing monthly snowfall, rainfall, and crowd percentages\n\n**Design**\n\nThe dashboard uses a modern glassmorphism design with a purple gradient background and smooth animations, making it both functional and visually appealing for trip planning.",
+      "url": "https://claude.ai/public/artifacts/3a761ebc-0061-44e3-ab7c-06fbf2e5bc85",
+      "platform": "claude",
+      "category": "experiment",
+      "tags": [
+        "glassmorphism",
+        "animation"
+      ]
+    },
+    {
+      "title": "The Big Context Picture",
+      "summary": "**Every major tech company now has multiple AI models**, and they're in an arms race. The chart tracks 22 different models across 5 companies as of August 2025. These are the same AI systems that power ChatGPT, Claude, Gemini, and other assistants you might use.\n",
+      "fullDescription": "## What This Chart Shows You\n\nThink of this as a **menu of the most powerful AI assistants** available today - like comparing the latest smartphones, but for AI chatbots and coding assistants.\n\n\n### What the Numbers Mean\n\n**Context Window** = How much text the AI can \"remember\" in a single conversation\n- **128k tokens** ≈ A short novel (about 100,000 words)\n- **200k tokens** ≈ Harry Potter and the Sorcerer's Stone\n- **400k tokens** ≈ The entire Lord of the Rings trilogy  \n- **1M tokens** ≈ About 10 novels or 800,000 words\n- **10M tokens** ≈ An entire library shelf\n\nBigger context = the AI can work with longer documents, remember more of your conversation, and handle complex projects better.\n\n### Key Takeaways\n\n1. **OpenAI (ChatGPT)** has the newest GPT-5 with 400,000 token memory - a huge upgrade from earlier versions\n\n2. **Google's Gemini 2.5** models all have massive 1 million token contexts - they can read entire codebases or book series\n\n3. **The verification badges matter** - Green means the specs are accurate, yellow means the marketing doesn't match reality (looking at you, Grok 3), and orange means users are reporting problems\n\n4. **Not all claims are true** - xAI claims Grok 3 has 1 million token memory, but it actually caps at 131,000. Meta's Llama 4 supposedly beats everyone on benchmarks but users say it performs poorly.\n\n5. **These are all available now** - If you're using ChatGPT, Claude, Gemini, or other AI tools, you're likely using one of these models.\n\n### Why This Matters\n\nIf you're choosing an AI assistant for work or personal use, this chart helps you understand what you're actually getting versus what's being advertised. It's like a consumer reports guide for AI - cutting through marketing hype to show real capabilities.\n\nThe rapid evolution (GPT-5 and Claude 4 didn't exist 6 months ago!) shows how fast this technology is advancing. What required a supercomputer five years ago now runs on your phone.",
+      "url": "https://claude.ai/public/artifacts/8d577a3d-dcc3-4d0d-9285-94d8678993c2",
+      "platform": "claude",
+      "category": "visualization",
+      "tags": [
+        "context windows",
+        ""
+      ]
+    },
+    {
+      "title": "Scrum Timer with Collaboration Tracker 🕐",
+      "summary": "A sleek, web-based timer designed specifically for **daily standup meetings** that helps teams stay on track and capture collaboration needs.\n",
+      "fullDescription": "## What it does\n\n### ⏱️ Visual Timer\n- Beautiful analog clock face that shows time remaining at a glance\n- Preset options for 1, 2, or 3-minute standups\n- Visual alerts when time is running low (flashing in final 10 seconds)\n- Smooth animations with a professional \"watch-like\" aesthetic\n\n### 📋 Built-in Standup Questions\nDisplays the four key daily standup questions:\n1. What did you accomplish yesterday?\n2. What will you work on today? \n3. Are there any blockers or impediments?\n4. Do you need a collaboration? (With whom?)\n\n### 🤝 Collaboration Tracker\n- Capture who needs to collaborate with whom during the standup\n- Quick entry system that handles names with spaces\n- One-click copy formatted for Slack/Teams\n- Keeps running list throughout the meeting\n\n### 🎯 Key Features\n- **Keyboard shortcuts**: Space to start/pause, R to reset, 1-3 for presets\n- **Fully responsive**: Works great on desktop, tablet, and mobile\n- **No installation needed**: Just open in a browser\n- **Clean, modern UI** with glassmorphic design elements\n\nPerfect for Scrum Masters, team leads, or anyone running daily standups who wants to keep meetings focused and capture important collaboration needs without interrupting the flow.",
+      "url": "https://claude.ai/public/artifacts/e6154a87-08d9-48bf-bf47-c6b19f088722",
+      "platform": "claude",
+      "category": "visualization",
+      "tags": [
+        "scrum",
+        "agile",
+        "timer",
+        "team"
+      ]
+    },
+    {
+      "title": "Interactive Particle System",
+      "summary": "A mesmerizing visual experience featuring hundreds of animated particles that dance across your screen and respond to your mouse movements in real-time.",
+      "fullDescription": "# Interactive Particle System\n\n## What is it?\nA mesmerizing visual experience featuring hundreds of animated particles that dance across your screen and respond to your mouse movements in real-time.\n\n## How to interact\n- **Move your mouse** anywhere on the screen to watch particles scatter away from your cursor\n- **Hold still** to see particles gradually return to their natural flowing patterns\n- **Works on touch devices** too - just drag your finger across the screen\n\n## Customize your experience\nUse the controls in the bottom-left corner to adjust:\n\n- **Particles** (50-2000) - More particles = denser, more complex patterns\n- **Speed** - How fast particles move and orbit\n- **Size** - Make particles bigger or smaller\n- **Connections** - How far apart particles can be while still connecting with lines\n- **Rainbow Mode** - Toggle between white particles and a colorful, shifting spectrum\n\n## What you'll see\n- Particles that move in gentle orbital patterns\n- Dynamic connections that form between nearby particles\n- Fluid, organic networks that constantly shift and evolve\n- Responsive behavior as particles react to your presence\n\nPerfect for relaxation, creative inspiration, or just enjoying some beautiful digital art that responds to your touch!",
+      "url": "https://claude.ai/public/artifacts/2e393fd9-9982-46d9-9396-0fb387bafb97",
+      "platform": "claude",
+      "category": "visualization",
+      "tags": [
+        ""
+      ]
+    },
+    {
+      "title": "Scrum Timer",
+      "summary": "The Scrum Timer is a tool designed to help teams run better daily stand-up meetings. It goes beyond a simple stopwatch by allowing a facilitator to not only track time but also to capture real-time observations about how the meeting is going.\n",
+      "fullDescription": "**Key Features** \n\n- Speaking Timer: A classic analog and digital timer tracks the overall meeting time and the speaking time for each individual attendee.\n\n- Observational Tagging: This is the core of the app. Instead of just taking notes, a facilitator can quickly \"tag\" participants with predefined behaviors. These tags are organized by role (like Product Owner or Scrum Master) and help identify positive patterns to reinforce and negative patterns to discuss later.\n\n- Customizable Roles: You can assign specific roles (like Product Owner, Scrum Master, etc.) to attendees. This ensures that the tags you apply are relevant to their function on the team. You can even assign multiple roles to one person.\n\n- Integrated Workspace: A built-in workspace allows the facilitator to take free-form notes using Markdown and manage a list of action items directly within the app.\n\n- Meeting Summary: At the end of the meeting, the app generates a complete summary—including speaking times, all observational tags, notes, and action items—that can be easily copied and pasted into team chats or documentation.",
+      "url": "https://g.co/gemini/share/abe11f94af98",
+      "platform": "gemini",
+      "category": "experiment",
+      "tags": [
+        ""
+      ]
+    }
+  ]
+}
