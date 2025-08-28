@@ -22,5 +22,19 @@
       "context windows",
       ""
     ]
+  },
+  {
+    "title": "Scrum Timer with Collaboration Tracker 🕐",
+    "summary": "A sleek, web-based timer designed specifically for **daily standup meetings** that helps teams stay on track and capture collaboration needs.\n",
+    "fullDescription": "## What it does\n\n### ⏱️ Visual Timer\n- Beautiful analog clock face that shows time remaining at a glance\n- Preset options for 1, 2, or 3-minute standups\n- Visual alerts when time is running low (flashing in final 10 seconds)\n- Smooth animations with a professional \"watch-like\" aesthetic\n\n### 📋 Built-in Standup Questions\nDisplays the four key daily standup questions:\n1. What did you accomplish yesterday?\n2. What will you work on today? \n3. Are there any blockers or impediments?\n4. Do you need a collaboration? (With whom?)\n\n### 🤝 Collaboration Tracker\n- Capture who needs to collaborate with whom during the standup\n- Quick entry system that handles names with spaces\n- One-click copy formatted for Slack/Teams\n- Keeps running list throughout the meeting\n\n### 🎯 Key Features\n- **Keyboard shortcuts**: Space to start/pause, R to reset, 1-3 for presets\n- **Fully responsive**: Works great on desktop, tablet, and mobile\n- **No installation needed**: Just open in a browser\n- **Clean, modern UI** with glassmorphic design elements\n\nPerfect for Scrum Masters, team leads, or anyone running daily standups who wants to keep meetings focused and capture important collaboration needs without interrupting the flow.",
+    "url": "https://claude.ai/public/artifacts/e6154a87-08d9-48bf-bf47-c6b19f088722",
+    "platform": "claude",
+    "category": "visualization",
+    "tags": [
+      "scrum",
+      "agile",
+      "timer",
+      "team"
+    ]
   }
 ]
